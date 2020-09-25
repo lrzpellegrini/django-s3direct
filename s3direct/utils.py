@@ -124,7 +124,7 @@ def create_upload_data(content_type, key, acl, bucket=None, cache_control=None,
     signature = hmac.new(signing_key, msg=policy,
                          digestmod=hashlib.sha256).hexdigest()
 
-    structure = getattr(settings, 'S3DIRECT_URL_STRUCTURE', 'https://{0}/{1}')
+    structure = getattr(settings, 'S3DIRECT_URL_STRUCTURE', 'http://{0}/{1}')
     bucket_url = structure.format(endpoint, bucket)
 
     return_dict = {
