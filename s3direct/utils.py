@@ -124,7 +124,7 @@ def create_upload_data(content_type, key, acl, bucket=None, cache_control=None,
     signature = hmac.new(signing_key, msg=policy,
                          digestmod=hashlib.sha256).hexdigest()
     
-    print('Forcing http over S3DIRECT_URL_STRUCTURE', getattr(settings, 'S3DIRECT_URL_STRUCTURE'))
+    print('Forcing http over S3DIRECT_URL_STRUCTURE', getattr(settings, 'S3DIRECT_URL_STRUCTURE', None))
     structure = getattr(settings, 'S3DIRECT_URL_STRUCTURE', 'http://{0}/{1}')
     bucket_url = structure.format(endpoint, bucket)
 
